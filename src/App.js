@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
 
-function App() {
+import Form from "./Components/Form";
+import Manifest from "./Components/Manifest";
+import Footer from "./Components/Footer";
+
+const App = () => {
+  const [name, setName] = useState("");
+  const [bgColor, setBgColor] = useState("#f0f8ff");
+  const [fontColor, setFontColor] = useState("#2f95e9");
+  const [displayForm, setDisplayForm] = useState("flex");
+  const [displayManifest, setDisplayManifest] = useState("none");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form
+        name={name}
+        setName={setName}
+        bgColor={bgColor}
+        setBgColor={setBgColor}
+        fontColor={fontColor}
+        setFontColor={setFontColor}
+        displayForm={displayForm}
+        setDisplayForm={setDisplayForm}
+        setDisplayManifest={setDisplayManifest}
+      />
+
+      <Manifest
+        name={name}
+        bgColor={bgColor}
+        fontColor={fontColor}
+        displayManifest={displayManifest}
+      />
+
+      <Footer displayForm={displayForm} />
     </div>
   );
-}
+};
 
 export default App;
